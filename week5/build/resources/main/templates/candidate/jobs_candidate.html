@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công việc phù hợp</title>
+    <link rel="stylesheet" th:href="@{/css/nav.css}">
+</head>
+<body>
+
+<div style="display: flex;height: 100%">
+    <div style="border-right: solid">
+        <a class="nav" th:href="@{/}">Trang chủ</a><br>
+        <a class="nav" th:href="@{/job}">Công việc</a><br>
+        <a class="nav" th:href="@{/add_job}">Đăng tuyển</a><br>
+        <a class="nav" th:href="@{/login}">Ứng tuyển</a><br>
+        <a class="nav" th:href="@{/candidate_by_skill}">Tìm kiếm ứng viên</a>
+    </div>
+    <div style="flex: auto;border: solid">
+    <h1>Công việc phù hợp</h1>
+        <span th:each="jobName : ${jobNames}">
+       <ul th:each="job : ${jobs}" th:if="${job.getName()==jobName}">
+           <li><h2 th:text="${job.getName()}"></h2></li>
+           <li>Mô tả: <span th:text="${job.getDesc()}"></span></li>
+           <li>Công ti <span th:text="${job.getCompany().getCompName()}"></span></li>
+           <p>Kỹ năng yêu cầu</p>
+           <div style="display: table">
+               <div style="display: table-row" th:each="js : ${job.getJobSkills()}">
+                   <div style="display: table-cell" th:text="${js.skill.name}"></div>
+                   <div style="display: table-cell">-Trình độ: <span th:text="${js.getLevel()}"></span></div>
+               </div>
+           </div>
+       </ul>
+        </span>
+    </div>
+    <div style="border: 1px solid;width: 300px">
+        <div>
+            <h2>Kỹ năng hiện có:</h2>
+            <ul th:each="candidateSKill : ${candidate.getCandidateSkills()}">
+                <li th:text="${candidateSKill.getSkill().getName()}">
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2>Kỹ năng đề xuất:</h2>
+            <ul th:each="skill: ${skills}" >
+                    <li th:text="${skill.getName()}"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

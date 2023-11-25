@@ -1,0 +1,19 @@
+
+html,body{
+    height: 100%;
+}
+.nav{
+    display: block;
+    margin:20px;
+}
+select{
+    margin: 20px;
+}
+tr:first-child{
+    background-color: beige;
+}
+table,td{
+    border-collapse: collapse;
+    border: solid;
+    padding: 5px;
+}

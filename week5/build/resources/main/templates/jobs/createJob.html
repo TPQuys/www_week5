@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm công việc</title>
+    <link rel="stylesheet" th:href="@{/css/nav.css}">
+</head>
+<body>
+<div style="display: flex;height: 100%">
+    <div style="border-right: solid">
+        <a class="nav" th:href="@{/}">Trang chủ</a><br>
+        <a class="nav" th:href="@{/job}">Công việc</a><br>
+        <a class="nav" th:href="@{/add_job}">Đăng tuyển</a><br>
+        <a class="nav" th:href="@{/login}">Ứng tuyển</a><br>
+        <a class="nav" th:href="@{/candidate_by_skill}">Tìm kiếm ứng viên</a>
+    </div>
+    <div>
+    <h1>Thêm công việc</h1><br>
+    <form action="job/add" method="post">
+        <label>
+            Tên công việc:
+            <input name="job_name" required/>
+        </label>
+        <br>
+        <label>
+            công ti:
+            <select name="company">
+                <span th:each="com :${companies}">
+                <option th:text="${com.getCompName()}" th:value="${com.getId()}"></option>
+                </span>
+            </select>
+        </label>
+        <br>
+        <label>
+            Mô tả công việc:
+            <textarea name="desc" required></textarea>
+        </label>
+        <br>
+        <button type="submit" >thêm</button>
+    </form>
+    </div>
+</div>
+</body>
+</html>

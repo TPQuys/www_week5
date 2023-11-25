@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DangTuyen</title>
+    <link rel="stylesheet" th:href="@{/css/nav.css}">
+</head>
+<body>
+<div style="display: flex;height: 100%">
+    <div style="border-right: solid">
+        <a class="nav" th:href="@{/}">Trang chủ</a><br>
+        <a class="nav" th:href="@{/job}">Công việc</a><br>
+        <a class="nav" th:href="@{/add_job}">Đăng tuyển</a><br>
+        <a class="nav" th:href="@{/login}">Ứng tuyển</a><br>
+        <a class="nav" th:href="@{/candidate_by_skill}">Tìm kiếm ứng viên</a>
+    </div>
+    <div>
+        <h1>công việc</h1>
+        <ul th:each="job : ${jobs}">
+            <li ><h2 th:text="${job.name}">tét</h2></li>
+            <li>Mô tả: <span th:text="${job.desc}">;lk;l</span></li>
+            <p>Kỹ năng yêu cầu:</p>
+            <div style="display: table">
+                <div style="display: table-row" th:each="js : ${job.getJobSkills()}">
+                    <div style="display: table-cell" th:text="${js.skill.name}"></div>
+                    <div style="display: table-cell">-Trình độ: <span th:text="${js.getLevel()}"></span></div>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

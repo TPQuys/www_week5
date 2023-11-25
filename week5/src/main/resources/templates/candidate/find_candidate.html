@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm kiếm ứng viên phù hợp</title>
+        <link rel="stylesheet" th:href="@{/css/nav.css}">
+</head>
+<body>
+<div style="display: flex;height: 100%">
+    <div style="border-right: solid">
+        <a class="nav" th:href="@{/}">Trang chủ</a><br>
+        <a class="nav" th:href="@{/job}">Công việc</a><br>
+        <a class="nav" th:href="@{/add_job}">Đăng tuyển</a><br>
+        <a class="nav" th:href="@{/login}">Ứng tuyển</a><br>
+        <a class="nav" th:href="@{/candidate_by_skill}">Tìm kiếm ứng viên</a>
+    </div>
+    <div>  <h1>Tìm kiếm ứng viên</h1>
+        <form action="/get_skill" method="get">
+        <span>Kỹ năng yêu cầu:</span>
+        <select  name="name">
+            <option th:each="skill : ${skills}"  th:value="${skill.getName()}">[[${skill.getName()}]]</option>
+        </select>
+        <br/>
+        <span>Trình độ yêu cầu</span>
+        <select  name="level">
+            <option value="BEGINNER">Beginner</option>
+            <option value="INTERMEDIATE">Intermediate</option>
+            <option value="ADVANCED">Advanced</option>
+        </select>
+            <button type="submit">Tìm kiếm</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
